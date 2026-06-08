@@ -17,11 +17,23 @@ function makeGrid() {
 
 makeGrid()
 
-let sqaureDivs = document.querySelectorAll(".squareDiv")
+let squareDivs = document.querySelectorAll(".squareDiv");
 
-sqaureDivs.forEach(function (item) {
-    item.addEventListener("mouseenter", () => item.style.backgroundColor = "black")
+squareDivs.forEach(function (squareDiv) {
+    squareDiv.addEventListener("mouseenter", function randomizeBackgroundColorOfSqaureDivs() {
+        let colors = ["#EE82EE", "#4B0082", "#0000FF", "#008000", "#FFFF00", "#FFA500", "#FF0000", "#00FFFF", "#FF00FF", "#FFC0CB", "#A52A2A", "#808080"];
+        let randomIndex = getRandomNumber(0, 11);
+        let randomColor = colors[randomIndex];
+        squareDiv.style.backgroundColor = randomColor;
+    });
 })
+
+
+
+function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 
 let sizeButton = document.querySelector(".size-button");
 sizeButton.addEventListener("click", getSize)
@@ -63,7 +75,12 @@ function makeNewGrid(noOfSquareDivsPerSide) {
 
     let sqaureDivs = document.querySelectorAll(".squareDiv")
 
-    sqaureDivs.forEach(function (item) {
-        item.addEventListener("mouseenter", () => item.style.backgroundColor = "black")
+    sqaureDivs.forEach(function (squareDiv) {
+        squareDiv.addEventListener("mouseenter", function randomizeBackgroundColorOfSqaureDivs() {
+            let colors = ["#EE82EE", "#4B0082", "#0000FF", "#008000", "#FFFF00", "#FFA500", "#FF0000", "#00FFFF", "#FF00FF", "#FFC0CB", "#A52A2A", "#808080"];
+            let randomIndex = getRandomNumber(0, 11);
+            let randomColor = colors[randomIndex];
+            squareDiv.style.backgroundColor = randomColor;
+        })
     })
 }
