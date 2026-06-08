@@ -42,6 +42,11 @@ sizeButton.addEventListener("click", getSize)
 function getSize() {
     let noOfSquareDivsPerSide = +prompt("Enter the no of squares you want per side of the grid:");
     console.log(typeof noOfSquareDivsPerSide);
+
+    if (noOfSquareDivsPerSide <= 0) {
+        alert("Enter number greater than 0");
+    }
+
     if (noOfSquareDivsPerSide <= 100) {
         removeExistingGrid();
         makeNewGrid(noOfSquareDivsPerSide);
