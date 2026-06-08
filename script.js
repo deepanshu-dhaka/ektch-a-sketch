@@ -1,18 +1,21 @@
-let container = document.querySelector(".container");
+container = document.querySelector(".container");
 
-// for (let x = 0; x < 5; x++) {
-//     document.querySelector(".container").appendChild(squareDiv.cloneNode(true));
-// }
+function makeGrid() {
 
-for (let x = 0; x < 256; x++) {
-    let squareDiv = document.createElement("div");
-    squareDiv.classList.add("squareDiv")
-    squareDiv.style.width = "20px";
-    squareDiv.style.height = "20px";
-    squareDiv.style.outline = "2px solid black"
+    container.style.paddingLeft = "600px";
+    container.style.paddingRight = "600px";
+    for (let i = 0; i < 256; i++) {
+        let squareDiv = document.createElement("div");
+        squareDiv.classList.add("squareDiv")
+        squareDiv.style.border = "2px solid black";
+        squareDiv.style.width = "20px";
+        squareDiv.style.height = "20px";
+        container.appendChild(squareDiv);
+    }
 
-    container.appendChild(squareDiv);
 }
+
+makeGrid()
 
 let sqaureDivs = document.querySelectorAll(".squareDiv")
 
@@ -27,30 +30,10 @@ sizeButton.addEventListener("click", getSize)
 function getSize() {
     let noOfSquareDivsPerSide = +prompt("Enter the no of squares you want per side of the grid:");
     console.log(typeof noOfSquareDivsPerSide);
-    makeSqaureGrid(noOfSquareDivsPerSide);
-}
-
-function makeSqaureGrid(noOfSquareDivsPerSide) {
-    let totalNoOfSqaureDivs = noOfSquareDivsPerSide * noOfSquareDivsPerSide;
-    let containerWidth = noOfSquareDivsPerSide * 20;
-    let containerHeight = noOfSquareDivsPerSide * 20;
-    container.style.width = `${containerWidth}px`;
-    container.style.width = `${containerHeight}px`;
-    removeExistingGrid()
-    for (let x = 0; x < totalNoOfSqaureDivs; x++) {
-        let squareDiv = document.createElement("div");
-        squareDiv.classList.add("squareDiv")
-        squareDiv.style.width = "20px";
-        squareDiv.style.height = "20px";
-        squareDiv.style.outline = "2px solid black"
-
-        container.appendChild(squareDiv);
-    }
-    let sqaureDivs = document.querySelectorAll(".squareDiv")
-
-    sqaureDivs.forEach(function (item) {
-        item.addEventListener("mouseenter", () => item.style.backgroundColor = "black")
-    })
+    if (noOfSquareDivsPerSide <= 100) {
+        removeExistingGrid();
+        makeNewGrid(noOfSquareDivsPerSide);
+    } else alert("The maximum limit is 100 squares per side of the grid.")
 }
 
 function removeExistingGrid() {
@@ -58,5 +41,29 @@ function removeExistingGrid() {
 
     sqaureDivs.forEach(function (item) {
         container.removeChild(item);
+    })
+}
+
+function makeNewGrid(noOfSquareDivsPerSide) {
+    let totalNumberOfSqaureDivs = noOfSquareDivsPerSide * noOfSquareDivsPerSide;
+    let totalWidthOfGrid = noOfSquareDivsPerSide * 20;
+    // Total width of the parent container is 1000px and remainingSpaceWithingContainerOnLeftandRight essentially is the padding for left and right of the parent container which helps in breaking square divs on the next row.
+    let remainingSpaceWithingContainerOnLeftandRight = (1520 - totalWidthOfGrid) / 2;
+    container.style.paddingLeft = `${remainingSpaceWithingContainerOnLeftandRight}px`;
+    container.style.paddingRight = `${remainingSpaceWithingContainerOnLeftandRight}px`;
+
+    for (let i = 0; i < totalNumberOfSqaureDivs; i++) {
+        let squareDiv = document.createElement("div");
+        squareDiv.classList.add("squareDiv")
+        squareDiv.style.border = "2px solid black";
+        squareDiv.style.width = "20px";
+        squareDiv.style.height = "20px";
+        container.appendChild(squareDiv);
+    }
+
+    let sqaureDivs = document.querySelectorAll(".squareDiv")
+
+    sqaureDivs.forEach(function (item) {
+        item.addEventListener("mouseenter", () => item.style.backgroundColor = "black")
     })
 }
