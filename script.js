@@ -2,14 +2,14 @@ container = document.querySelector(".container");
 
 function makeGrid() {
 
-    container.style.paddingLeft = "600px";
-    container.style.paddingRight = "600px";
+    container.style.paddingLeft = "638.4px";
+    container.style.paddingRight = "638.4px";
     for (let i = 0; i < 256; i++) {
         let squareDiv = document.createElement("div");
         squareDiv.classList.add("squareDiv")
         squareDiv.style.border = "2px solid black";
-        squareDiv.style.width = "20px";
-        squareDiv.style.height = "20px";
+        squareDiv.style.width = "15.2px";
+        squareDiv.style.height = "15.2px";
         container.appendChild(squareDiv);
     }
 
@@ -46,7 +46,7 @@ function removeExistingGrid() {
 
 function makeNewGrid(noOfSquareDivsPerSide) {
     let totalNumberOfSqaureDivs = noOfSquareDivsPerSide * noOfSquareDivsPerSide;
-    let totalWidthOfGrid = noOfSquareDivsPerSide * 20;
+    let totalWidthOfGrid = noOfSquareDivsPerSide * 15.2;
     // Total width of the parent container is 1000px and remainingSpaceWithingContainerOnLeftandRight essentially is the padding for left and right of the parent container which helps in breaking square divs on the next row.
     let remainingSpaceWithingContainerOnLeftandRight = (1520 - totalWidthOfGrid) / 2;
     container.style.paddingLeft = `${remainingSpaceWithingContainerOnLeftandRight}px`;
@@ -56,8 +56,8 @@ function makeNewGrid(noOfSquareDivsPerSide) {
         let squareDiv = document.createElement("div");
         squareDiv.classList.add("squareDiv")
         squareDiv.style.border = "2px solid black";
-        squareDiv.style.width = "20px";
-        squareDiv.style.height = "20px";
+        squareDiv.style.width = "15.2px";
+        squareDiv.style.height = "15.2px";
         container.appendChild(squareDiv);
     }
 
