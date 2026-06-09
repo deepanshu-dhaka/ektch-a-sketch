@@ -14,8 +14,8 @@
 
 .container {
   display: flex;
-  /* height: 1000px; */
-  width: 1520px;
+  height: 530px;
+  width: 530px;
   flex-wrap: wrap;
 }
 
